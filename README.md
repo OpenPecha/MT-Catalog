@@ -1,6 +1,4 @@
-# README
-
-> **Note:** This readme template is based on one from the [Good Docs Project](https://thegooddocsproject.dev). You can find it and a guide to filling it out [here](https://gitlab.com/tgdp/templates/-/tree/main/readme). (_Erase this note after filling out the readme._)
+# MT-Catalog: MonlamAI Translation Memory Cataloging System
 
 <h1 align="center">
   <br>
@@ -8,12 +6,12 @@
   <br>
 </h1>
 
-## _Project Name_
-_The project name should match its code's capability so that new users can easily understand what it does._
+## TM Repository Cataloging System
+A comprehensive tool for cataloging Tibetan-English translation memory repositories within the MonlamAI GitHub organization. This system automatically discovers, analyzes, and catalogs all repositories starting with "TM" to provide detailed metadata, file statistics, and extracted titles.
 
 ## Owner(s)
 
-_Change to the owner(s) of the new repo. (This template's owners are:)_
+- MonlamAI Team
 - [@ngawangtrinley](https://github.com/ngawangtrinley)
 - [@mikkokotila](https://github.com/mikkokotila)
 - [@evanyerburgh](https://github.com/evanyerburgh)
@@ -33,55 +31,82 @@ _Change to the owner(s) of the new repo. (This template's owners are:)_
 <hr>
 
 ## Project description
-_Use one of these:_
 
-With _Project Name_ you can _verb_ _noun_...
+The MT-Catalog system helps you **automatically catalog and analyze** all Tibetan-English translation memory repositories within the MonlamAI GitHub organization. 
 
-_Project Name_ helps you _verb_ _noun_...
+With MT-Catalog you can:
+- **Discover** all repositories starting with "TM" in the MonlamAI organization
+- **Identify** Tibetan (bo) and English (en) text files using intelligent matching
+- **Extract** titles using language-specific rules and Tibetan markers
+- **Count** lines and analyze file statistics
+- **Generate** comprehensive CSV catalogs with detailed metadata
+- **Track** translation sources and estimate translation pairs
 
 
 ## Who this project is for
-This project is intended for _target user_ who wants to _user objective_.
+This project is intended for:
+- **MonlamAI team members** who need to track and catalog translation memory repositories
+- **Researchers** studying Tibetan-English parallel text corpora
+- **Data scientists** working with translation pair datasets
+- **Project managers** tracking translation sources and preventing duplicate work
 
 
 ## Project dependencies
-Before using _Project Name_, ensure you have:
-* _Prerequisite 1_
-* _Prerequisite 2_
-* _Prerequisite 3..._
+Before using MT-Catalog, ensure you have:
+* **Python 3.7+** with pip package manager
+* **GitHub Personal Access Token** with MonlamAI organization access
+* **Repository permissions** to read MonlamAI TM* repositories
+* **Required Python packages** (see `requirementx.txt`)
 
 
 ## Instructions for use
-Get started with _Project Name_ by _(write the first step a user needs to start using the project. Use a verb to start.)_.
+Get started with MT-Catalog by **cloning the repository** and setting up your GitHub authentication.
+
+### Install MT-Catalog
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/MonlamAI/MT-Catalog.git
+   cd MT-Catalog
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirementx.txt
+   ```
+
+### Configure MT-Catalog
+1. **Set up GitHub authentication**
+   ```bash
+   cp .env.example .env
+   ```
+   
+2. **Add your GitHub token to `.env`**
+   ```
+   GITHUB_TOKEN=your_github_personal_access_token_here
+   ```
+   
+   See [GitHub Token Setup Guide](docs/TM_RETRIEVER_USAGE.md#setup-instructions) for detailed instructions.
+
+### Run MT-Catalog
+1. **Navigate to the source directory**
+   ```bash
+   cd src/
+   ```
+   
+2. **Execute the cataloging system**
+   ```bash
+   python TM_retriever.py
+   ```
+   
+3. **Check the output**
+   - CSV catalog: `../output_csv/tm_repos_catalog.csv`
+   - Log file: `tm_retriever.log`
 
 
-### Install _Project Name_
-1. _Write the step here._ 
-
-    _Explanatory text here_ 
-    
-    _(Optional: Include a code sample or screenshot that helps your users complete this step.)_
-
-2. _Write the step here._
- 
-    a. _Substep 1_ 
-    
-    b. _Substep 2_
-
-
-### Configure _Project Name_
-1. _Write the step here._
-2. _Write the step here._
-
-
-### Run _Project Name_
-1. _Write the step here._
-2. _Write the step here._
-
-
-### Troubleshoot _Project Name_
-1. _Write the step here._
-2. _Write the step here._
+### Troubleshoot MT-Catalog
+1. **Check log files** for detailed error information (`tm_retriever.log`)
+2. **Verify GitHub token** permissions and expiration
+3. **Ensure network connectivity** to GitHub API
 
 <table>
   <tr>
@@ -94,35 +119,34 @@ Get started with _Project Name_ by _(write the first step a user needs to start 
   </tr>
   <tr>
    <td>
-    _Describe the issue here_
+    Authentication Error
    </td>
    <td>
-    _Write solution here_
-   </td>
-  </tr>
-  <tr>
-   <td>
-    _Describe the issue here_
-   </td>
-   <td>
-    _Write solution here_
+    Verify GitHub token is correct and has proper permissions
    </td>
   </tr>
   <tr>
    <td>
-    _Describe the issue here_
+    No Repositories Found
    </td>
    <td>
-    _Write solution here_
+    Check access to MonlamAI organization and TM* repositories exist
+   </td>
+  </tr>
+  <tr>
+   <td>
+    File Access Errors
+   </td>
+   <td>
+    Ensure token has repository read permissions for private repos
    </td>
   </tr>
 </table>
 
-
 Other troubleshooting supports:
-* _Link to FAQs_
-* _Link to runbooks_
-* _Link to other relevant support information_
+* [Detailed Usage Guide](docs/TM_RETRIEVER_USAGE.md)
+* [GitHub Token Setup Instructions](docs/TM_RETRIEVER_USAGE.md#setup-instructions)
+* [Error Handling Documentation](docs/TM_RETRIEVER_USAGE.md#troubleshooting)
 
 
 ## Contributing guidelines
@@ -130,12 +154,13 @@ If you'd like to help out, check out our [contributing guidelines](/CONTRIBUTING
 
 
 ## Additional documentation
-_Include links and brief descriptions to additional documentation._
 
-For more information:
-* [Reference link 1](#)
-* [Reference link 2](#)
-* [Reference link 3](#)
+For comprehensive documentation and advanced usage:
+
+* [**TM_retriever Usage Guide**](docs/TM_RETRIEVER_USAGE.md) - Complete setup and usage instructions
+* [**GitHub Token Setup**](docs/TM_RETRIEVER_USAGE.md#setup-instructions) - Step-by-step authentication guide
+* [**CSV Output Format**](docs/TM_RETRIEVER_USAGE.md#csv-catalog-structure) - Detailed column descriptions
+* [**Customization Options**](docs/TM_RETRIEVER_USAGE.md#customization) - How to modify the system for your needs
 
 
 ## How to get help
@@ -145,4 +170,4 @@ For more information:
 
 
 ## Terms of use
-_Project Name_ is licensed under the [MIT License](/LICENSE.md).
+MT-Catalog is licensed under the [MIT License](/LICENSE.md).

@@ -6,4 +6,8 @@ __pycache__
 
 # datas
 data
-output_csv
+existing_data
+src/logs
+src/checkpoints
+
+.DS_Store
